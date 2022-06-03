@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "U2AMPEBX1pR3ZcaAvIcS9KkJQsveckjuvy8eO5ZST8C4yYCeijsVPQ13ysnVfTo9Q5GAzB88mFh3rCgGpBs/nw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bomondi\\Desktop\\Burens\\PayrollAPI\\PayrollAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bomondi\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512"
+  ],
+  "logs": []
+}
