@@ -62,7 +62,5 @@ namespace PayrollAPI.Models
 
         [Required]
         public int EmployerCode { get; set; }
-
-
     }
 }
