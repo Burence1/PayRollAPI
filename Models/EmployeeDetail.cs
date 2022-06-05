@@ -58,6 +58,9 @@ namespace PayrollAPI.Models
         public int EmployerCode { get; set; }
 
         [Required]
+        public bool IsDeleted { get; set; } = false;
+
+        [Required]
         public virtual ICollection<EmployeeEducation> EmployeeEducations { get; set; }
     }
 }
