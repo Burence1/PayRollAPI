@@ -33,7 +33,7 @@ namespace PayrollAPI.Models
         public string PhoneNumber { get; set; }
 
         [Required]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         [Required]
         public int IdNo { get; set; }
