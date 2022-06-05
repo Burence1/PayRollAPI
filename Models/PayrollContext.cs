@@ -8,5 +8,7 @@ namespace PayrollAPI.Models
         { }
 
         public DbSet<EmployeeDetail> EmployeeDetails { get; set; }
+
+        public DbSet<EmployeeEducation> EmployeeEducations { get; set; }
     }
 }

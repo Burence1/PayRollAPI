@@ -12,24 +12,19 @@ namespace PayrollAPI.Models
         [Column(TypeName = "int")]
         public int EmployeeNo { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string FirstName { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string MiddleName { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string LastName { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required,StringLength(50)]
         public string Citizenship { get; set; }
 
-        [Required]
-        [StringLength(16)]
+        [Required, StringLength(13)]
         public string PhoneNumber { get; set; }
 
         [Required]
@@ -38,16 +33,13 @@ namespace PayrollAPI.Models
         [Required]
         public int IdNo { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string KRANo { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string NHIFNo { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required, StringLength(50)]
         public string NSSFNo { get; set; }
 
         [Required]
@@ -55,12 +47,17 @@ namespace PayrollAPI.Models
         public Decimal GrossPay { get; set; }
 
         [Required]
+        [Column(TypeName = "int")]
         public int NumberOfChildren { get; set; }
 
         [StringLength(50)]
         public string MaritalStatus { get; set; }
 
         [Required]
+        [Column(TypeName = "int")]
         public int EmployerCode { get; set; }
+
+        [Required]
+        public virtual ICollection<EmployeeEducation> EmployeeEducations { get; set; }
     }
 }

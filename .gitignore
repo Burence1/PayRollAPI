@@ -365,3 +365,4 @@ FodyWeavers.xsd
 #Db connections
 appsettings.json
 appsettings.Development.json
+.env
