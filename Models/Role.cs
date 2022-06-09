@@ -22,6 +22,6 @@ namespace PayrollAPI.Models
         public string RoleCode { get; set; }
 
 
-        public virtual User _user { get; set; }
+        public virtual User User { get; set; }
     }
 }

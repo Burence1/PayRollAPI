@@ -50,7 +50,7 @@ namespace PayrollAPI.Models
         [DataType(DataType.Date)]
         public DateTime UpdatedAt { get; set; }
 
-        public virtual Role _role { get; set; }
+        public virtual Role Role { get; set; }
 
     }
 }
