@@ -13,6 +13,10 @@ namespace PayrollAPI.Models
 
         public DbSet<Education> educations { get; set; }
 
+        public DbSet<Role> roles { get; set; }
+
+        public DbSet<User> users { get; set; }
+
         //public DbSet<(EmployeeDetail, EmployeeEducation)> EmployeeEducations { get; set; }
     }
 }

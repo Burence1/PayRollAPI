@@ -61,6 +61,9 @@ namespace PayrollAPI.Models
         public bool IsDeleted { get; set; } = false;
 
         [Required]
+        public string EmployerPin { get; set; }
+
+        [Required]
         public virtual ICollection<EmployeeEducation> EmployeeEducations { get; set; }
     }
 }

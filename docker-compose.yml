@@ -11,3 +11,15 @@ services:
       - "${SQL_PORT}:1433"
     networks:
       - payrollAPI-network
+
+  backend-api:
+    build: .
+    restart: on-failure
+    depends_on: 
+    - backend-db
+    networks:
+      - payrollAPI-network
+
+networks:
+  payrollAPI-network:
+    driver: bridge
