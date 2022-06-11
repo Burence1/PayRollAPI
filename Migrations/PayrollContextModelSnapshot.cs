@@ -199,9 +199,10 @@ namespace PayrollAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("RoleType")
+                    b.Property<string>("RoleType")
+                        .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("RoleId");
 
@@ -211,13 +212,15 @@ namespace PayrollAPI.Migrations
             modelBuilder.Entity("PayrollAPI.Models.User", b =>
                 {
                     b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -228,7 +231,6 @@ namespace PayrollAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -236,7 +238,6 @@ namespace PayrollAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("MiddleName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -244,21 +245,17 @@ namespace PayrollAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserEmail")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserPassword")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserPhone")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
@@ -274,26 +271,9 @@ namespace PayrollAPI.Migrations
                         .HasForeignKey("EmployeeDetailEmployeeId");
                 });
 
-            modelBuilder.Entity("PayrollAPI.Models.User", b =>
-                {
-                    b.HasOne("PayrollAPI.Models.Role", "Role")
-                        .WithOne("User")
-                        .HasForeignKey("PayrollAPI.Models.User", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
             modelBuilder.Entity("PayrollAPI.Models.EmployeeDetail", b =>
                 {
                     b.Navigation("EmployeeEducations");
-                });
-
-            modelBuilder.Entity("PayrollAPI.Models.Role", b =>
-                {
-                    b.Navigation("User")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

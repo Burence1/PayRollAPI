@@ -13,7 +13,7 @@ namespace PayrollAPI.Models
         public string RoleName { get; set; }
 
         [Required,StringLength(50)]
-        public int RoleType { get; set; }
+        public string RoleType { get; set; }
 
         [Required]
         public bool IsAdmin { get; set; }
@@ -22,6 +22,6 @@ namespace PayrollAPI.Models
         public string RoleCode { get; set; }
 
 
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
     }
 }

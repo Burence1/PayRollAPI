@@ -12,8 +12,8 @@ using PayrollAPI.Models;
 namespace PayrollAPI.Migrations
 {
     [DbContext(typeof(PayrollContext))]
-    [Migration("20220605121653_fix educations")]
-    partial class fixeducations
+    [Migration("20220611160457_initial users_")]
+    partial class initialusers_
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,27 @@ namespace PayrollAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("PayrollAPI.Models.Education", b =>
+                {
+                    b.Property<int>("InstitutionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstitutionId"), 1L, 1);
+
+                    b.Property<string>("InstitutionName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("InstitutionId");
+
+                    b.ToTable("educations");
+                });
 
             modelBuilder.Entity("PayrollAPI.Models.EmployeeDetail", b =>
                 {
@@ -47,6 +68,10 @@ namespace PayrollAPI.Migrations
                     b.Property<int>("EmployerCode")
                         .HasColumnType("int");
 
+                    b.Property<string>("EmployerPin")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -57,6 +82,9 @@ namespace PayrollAPI.Migrations
 
                     b.Property<int>("IdNo")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("KRANo")
                         .IsRequired()
@@ -117,6 +145,9 @@ namespace PayrollAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Score")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -147,6 +178,92 @@ namespace PayrollAPI.Migrations
                     b.HasIndex("EmployeeDetailEmployeeId");
 
                     b.ToTable("EmployeeEducations");
+                });
+
+            modelBuilder.Entity("PayrollAPI.Models.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"), 1L, 1);
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RoleCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("RoleType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("roles");
+                });
+
+            modelBuilder.Entity("PayrollAPI.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsLocked")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("Logged")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MiddleName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserEmail")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserPhone")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("PayrollAPI.Models.EmployeeEducation", b =>
