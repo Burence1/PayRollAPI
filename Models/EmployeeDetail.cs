@@ -64,6 +64,6 @@ namespace PayrollAPI.Models
         public string EmployerPin { get; set; }
 
         [Required]
-        public virtual ICollection<EmployeeEducation> EmployeeEducations { get; set; }
+        public virtual ICollection<EmployeeEducation> EmployeeEducations { get; set; } = new List<EmployeeEducation>();
     }
 }

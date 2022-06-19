@@ -12,8 +12,8 @@ using PayrollAPI.Models;
 namespace PayrollAPI.Migrations
 {
     [DbContext(typeof(PayrollContext))]
-    [Migration("20220611160457_initial users_")]
-    partial class initialusers_
+    [Migration("20220619184418_update")]
+    partial class update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,9 +137,6 @@ namespace PayrollAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EducationHistId"), 1L, 1);
 
-                    b.Property<int?>("EmployeeDetailEmployeeId")
-                        .HasColumnType("int");
-
                     b.Property<string>("InstitutionName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -152,6 +149,9 @@ namespace PayrollAPI.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("employeeDetailEmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("endDate")
                         .IsRequired()
@@ -175,7 +175,7 @@ namespace PayrollAPI.Migrations
 
                     b.HasKey("EducationHistId");
 
-                    b.HasIndex("EmployeeDetailEmployeeId");
+                    b.HasIndex("employeeDetailEmployeeId");
 
                     b.ToTable("EmployeeEducations");
                 });
@@ -268,9 +268,13 @@ namespace PayrollAPI.Migrations
 
             modelBuilder.Entity("PayrollAPI.Models.EmployeeEducation", b =>
                 {
-                    b.HasOne("PayrollAPI.Models.EmployeeDetail", null)
+                    b.HasOne("PayrollAPI.Models.EmployeeDetail", "employeeDetail")
                         .WithMany("EmployeeEducations")
-                        .HasForeignKey("EmployeeDetailEmployeeId");
+                        .HasForeignKey("employeeDetailEmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("employeeDetail");
                 });
 
             modelBuilder.Entity("PayrollAPI.Models.EmployeeDetail", b =>

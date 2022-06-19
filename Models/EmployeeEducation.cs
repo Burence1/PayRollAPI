@@ -29,5 +29,7 @@ namespace PayrollAPI.Models
         [Required]
         public bool IsDeleted { get; set; } = false;
 
+        public EmployeeDetail employeeDetail { get; set; }
+
     }
 }

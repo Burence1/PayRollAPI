@@ -12,8 +12,8 @@ using PayrollAPI.Models;
 namespace PayrollAPI.Migrations
 {
     [DbContext(typeof(PayrollContext))]
-    [Migration("20220611103701_initial users")]
-    partial class initialusers
+    [Migration("20220617104124_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -223,7 +223,6 @@ namespace PayrollAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -234,7 +233,6 @@ namespace PayrollAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -249,21 +247,17 @@ namespace PayrollAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserEmail")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("UserPassword")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserPhone")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
