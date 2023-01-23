@@ -30,7 +30,6 @@ public class DbConnection
         catch (Exception ex)
         {
             Console.Write(ex.Message);
-            //' DoLogs("Error on MySqlConnection Function. " & Now().ToString & " " & Session("Currentusername").trim & "- " & Session("compname") & "=" & ex.Message)
         }
         return MySqlConnection;
     }
@@ -127,7 +126,6 @@ public class DbConnection
         }
         catch (Exception ex)
         {
-            //LogError("Error ", ex.Message.ToString().Trim());
             dataTable.Clear();
             dataTable.Columns.Add("ErrorMessage", typeof(string));
             return dataTable;

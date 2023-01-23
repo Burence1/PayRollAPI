@@ -47,8 +47,6 @@ public class DBInterface
         }
         catch (Exception ex)
         {
-            //ApiInterfaceCs.DoLogs(ApiInterfaceCs.PrepareErrorMessage(Page, "cboLanguagePref_SelectedIndexChanged", ex));
-            //showErrorMessage("Error occured in ASP_StaffPayrollRpt.");
             return null;
         }
     }
