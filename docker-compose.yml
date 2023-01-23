@@ -1,25 +1,55 @@
-﻿version: "3"
-services:
-  backend-db:
-    image: mcr.microsoft.com/mssql/server
-    restart: always
-    environment:
-      SA_PASSWORD: "${DB_PASSWORD}"
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "${MSSQL_PID}"
-    ports:
-      - "${SQL_PORT}:1433"
-    networks:
-      - payrollAPI-network
+﻿version: "3"  # optional since v1.27.0
 
-  backend-api:
+services:
+  web_api:
     build: .
     restart: on-failure
-    depends_on: 
-    - backend-db
-    networks:
-      - payrollAPI-network
+    image: payroll_api
+    container_name: payroll_api_application
+    ports:
+      - "5000:80"
+  sql:
+    restart: on-failure
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql_server2022
+    ports: # not actually needed, because the two services are on the same network
+      - "1434:1433" 
+    environment:
+      - ACCEPT_EULA=y
+      - SA_PASSWORD=pass@word1
 
-networks:
-  payrollAPI-network:
-    driver: bridge
+
+
+#version: "3"
+#services:
+#  backend-db:
+#    build:
+#        context: ./docker/db
+#        dockerfile: .
+#    user: root
+#    image: mcr.microsoft.com/mssql/server
+#    restart: always
+#    environment:
+#      SA_PASSWORD: "${DB_PASSWORD}"
+#      ACCEPT_EULA: "Y"
+#      MSSQL_PID: "${MSSQL_PID}"
+#    ports:
+#      - "${SQL_PORT}:1433"
+#    volumes:
+#      - './docker/volumes/sqlserver/data:/var/opt/mssql/data'
+#      - './docker/volumes/sqlserver/log:/var/opt/mssql/log'
+#      - './docker/volumes/sqlserver/backup:/var/opt/mssql/backup'
+#    networks:
+#      - payrollAPI-network
+
+#  backend-api:
+#    build: .
+#    restart: on-failure
+#    depends_on: 
+#    - backend-db
+#    networks:
+#      - payrollAPI-network
+
+#networks:
+#  payrollAPI-network:
+#    driver: bridge

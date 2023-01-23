@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Models\NewFolder1\" />
+    <Folder Include="DBInterface\" />
   </ItemGroup>
 
 </Project>

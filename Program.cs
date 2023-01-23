@@ -36,6 +36,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 var env = builder.Environment;
 
@@ -43,6 +52,7 @@ var env = builder.Environment;
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
 
 if (env.IsDevelopment())
 {

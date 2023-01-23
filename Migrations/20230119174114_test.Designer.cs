@@ -12,8 +12,8 @@ using PayrollAPI.Models;
 namespace PayrollAPI.Migrations
 {
     [DbContext(typeof(PayrollContext))]
-    [Migration("20220619184418_update")]
-    partial class update
+    [Migration("20230119174114_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
