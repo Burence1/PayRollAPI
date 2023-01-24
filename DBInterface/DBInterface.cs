@@ -24,8 +24,10 @@ public class DBInterface
 
             MyCmd.Parameters.Add("@mode", SqlDbType.Int).Value = mode;
             MyCmd.Parameters.Add("@FirstName", SqlDbType.VarChar).Value = employeeDetail.FirstName;
+            MyCmd.Parameters.Add("@MiddleName", SqlDbType.VarChar).Value = employeeDetail.MiddleName;
             MyCmd.Parameters.Add("@Citizenship", SqlDbType.VarChar).Value = employeeDetail.Citizenship;
             MyCmd.Parameters.Add("@DateOfBirth", SqlDbType.VarChar).Value = employeeDetail.DateOfBirth;
+            MyCmd.Parameters.Add("@IdentificationNo", SqlDbType.VarChar).Value = employeeDetail.IdentificationNo;
             MyCmd.Parameters.Add("@EmployeeEducations", SqlDbType.VarChar).Value = employeeDetail.EmployeeEducations;
             MyCmd.Parameters.Add("@EmployeeId", SqlDbType.VarChar).Value = employeeDetail.EmployeeId;
             MyCmd.Parameters.Add("@EmployeeNo", SqlDbType.VarChar).Value = employeeDetail.EmployeeNo;

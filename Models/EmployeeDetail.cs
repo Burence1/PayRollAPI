@@ -31,7 +31,7 @@ namespace PayrollAPI.Models
         public string DateOfBirth { get; set; }
 
         [Required]
-        public int IdNo { get; set; }
+        public int IdentificationNo { get; set; }
 
         [Required, StringLength(50)]
         public string KRANo { get; set; }
